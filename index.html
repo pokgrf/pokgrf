@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Earthquake Monitor - IMO</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-globe-americas"></i>
+                    <h1>Live Earthquake Monitor</h1>
+                </div>
+                <div class="status">
+                    <span class="status-indicator" id="statusIndicator"></span>
+                    <span class="status-text" id="statusText">Connecting...</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-shake"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Earthquakes</h3>
+                        <p class="stat-number" id="totalEarthquakes">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Largest Magnitude</h3>
+                        <p class="stat-number" id="largestMagnitude">0.0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Last Update</h3>
+                        <p class="stat-number" id="lastUpdate">--</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Active Regions</h3>
+                        <p class="stat-number" id="activeRegions">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="earthquake-list-container">
+                <div class="list-header">
+                    <h2>Recent Earthquakes</h2>
+                    <div class="filters">
+                        <select id="magnitudeFilter" class="filter-select">
+                            <option value="">All Magnitudes</option>
+                            <option value="0-1">0.0 - 1.0</option>
+                            <option value="1-2">1.0 - 2.0</option>
+                            <option value="2-3">2.0 - 3.0</option>
+                            <option value="3-4">3.0 - 4.0</option>
+                            <option value="4-5">4.0 - 5.0</option>
+                            <option value="5+">5.0+</option>
+                        </select>
+                        <select id="timeFilter" class="filter-select">
+                            <option value="24">Last 24 Hours</option>
+                            <option value="48">Last 48 Hours</option>
+                            <option value="168">Last Week</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="earthquake-list" id="earthquakeList">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading earthquake data...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Data provided by <a href="https://api.vedur.is/?urls.primaryName=Skjálftalísa" target="_blank">IMO API</a> | 
+               <span id="lastFetchTime">Last fetch: --</span></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
